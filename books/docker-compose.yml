@@ -1,0 +1,10 @@
+services:
+  typst-builder:
+    image: ghcr.io/typst/typst:latest
+    container_name: tftl-bookgen
+    working_dir: /app
+    volumes:
+      - .:/app
+    entrypoint: ""
+    command: >
+      sh -c "typst compile --font-path fonts echo-de-magnetron.typ output/tftl-echo-de-magnetron.pdf && typst compile --font-path fonts characters.typ output/tftl-characters.pdf && typst compile --font-path fonts rules.typ output/tftl-rules.pdf && echo 'Build Complete'"

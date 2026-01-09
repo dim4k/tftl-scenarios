@@ -1,0 +1,16 @@
+services:
+  gotenberg:
+    image: gotenberg/gotenberg:8
+    ports:
+      - "3000:3000"
+
+  pdf-generator:
+    image: python:3.11-slim
+    working_dir: /app
+    volumes:
+      - .:/app
+    depends_on:
+      - gotenberg
+    # On ajoute 'python -u' pour voir les logs immédiatement
+    command: >
+      sh -c "pip install pymupdf requests jinja2 && echo '--- LISTE DES FICHIERS ---' && ls -la && echo '--- LANCEMENT ---' && python -u fiche-gen.py"

@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  # Service 1: Typst Builder for Books (Scenario, Rules, Characters Book)
+  typst-builder:
+    image: ghcr.io/typst/typst:latest
+    container_name: tftl-bookgen-combined
+    working_dir: /app
+    volumes:
+      - ./books:/app       # Mount source files (books dir) to /app
+      - ./:/dist           # Mount project root to /dist for direct output
+    entrypoint: ""
+    command: >
+      sh -c "typst compile --font-path fonts echo-de-magnetron.typ /dist/tftl-echo-de-magnetron.pdf && 
+             typst compile --font-path fonts characters.typ /dist/tftl-characters.pdf && 
+             typst compile --font-path fonts rules.typ /dist/tftl-rules.pdf && 
+             echo '✅ Typst Build Complete'"
+
+  # Service 2: Gotenberg API (Required for Sheet Generator)
+  gotenberg:
+    image: gotenberg/gotenberg:8
+    container_name: tftl-gotenberg
+    ports:
+      - "3000:3000"
+
+  # Service 3: Character Sheet Generator (Python)
+  sheet-generator:
+    image: python:3.11-slim
+    container_name: tftl-sheetgen
+    working_dir: /app
+    depends_on:
+      - gotenberg
+    volumes:
+      - ./sheets:/app        # Mount sheets source code to /app
+      - ./:/app/output       # Mount project root to /app/output so script writes directly to root
+    command: >
+      sh -c "pip install --no-cache-dir pymupdf requests jinja2 && 
+             echo '--- GENERATION FICHES ---' && 
+             python -u fiche-gen.py &&
+             echo '✅ Sheet Generation Complete'"

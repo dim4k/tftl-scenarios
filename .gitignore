@@ -1,0 +1,21 @@
+# Generated Artifacts (Books & Sheets)
+output/
+tftl-*.pdf
+Fiche_*.pdf
+
+# System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs & Editors
+.vscode/
+.idea/
+*.swp
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+env/

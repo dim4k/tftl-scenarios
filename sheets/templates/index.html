@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Tales From The Loop</title>
+    <style>
+        @font-face {
+            font-family: 'Patrick Hand';
+            src: url('./handwriting.ttf') format('truetype');
+        }
+
+        /* --- GLOBAL RESET & A4 --- */
+        * { box-sizing: border-box; }
+        
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            margin: 0; padding: 0;
+            width: 210mm; 
+            height: 297mm; /* Strict A4 Height */
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 8pt;
+            background-color: white;
+            color: #111;
+            overflow: hidden;
+        }
+
+        /* --- LAYOUT STRUCTURE --- */
+        .sheet {
+            width: 100%; height: 100%;
+            padding: 4mm 6mm; /* Compressed padding */
+            display: flex; flex-direction: column;
+            gap: 1.5mm; /* Compressed gap */
+        }
+
+        /* --- UTILITY CLASSES --- */
+        .handwritten { font-family: 'Patrick Hand', cursive; color: #000080; font-size: 1.3em; line-height: 1.1; margin-left: 2mm; }
+        .flex-col { display: flex; flex-direction: column; }
+        .flex-grow { flex-grow: 1; }
+        
+        /* --- COLORS (Pastel) --- */
+        /* Beige: #fff2cc */
+        /* Peach: #fce5cd */
+        /* Gold: #ffd966 */
+        
+        .bg-beige { background-color: #fff2cc !important; }
+        .bg-peach { background-color: #fce5cd !important; }
+        .bg-gold { background-color: #ffd966 !important; }
+
+        /* --- RETRO SYSTEM --- */
+        .retro-block {
+            border: 2px solid #111;
+            display: flex; flex-direction: column;
+            background: white;
+        }
+        .retro-header {
+            background: #111; color: white;
+            padding: 1mm 3mm;
+            font-weight: 900; 
+            text-transform: uppercase;
+            font-size: 0.85em;
+            letter-spacing: 0.05em;
+        }
+        
+        /* ZEBRA ROWS (Left Col, Liens, Objets) */
+        .retro-row {
+            height: 6mm; /* Standard Height */
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 1.5mm;
+            font-size: 0.8em;
+            font-weight: bold;
+            border-bottom: 1px solid #fff;
+        }
+        .retro-row:last-child { border-bottom: none; }
+        
+        .retro-row.light { background-color: #fff2cc; }
+        .retro-row.dark { background-color: #fce5cd; }
+        .retro-row.gold { background-color: #ffd966; }
+        
+        .retro-row .sub-text { font-weight: normal; font-size: 0.85em; margin-left: 2px; }
+        .retro-row .label { text-transform: uppercase; margin-right: 2px; }
+
+        /* INPUT BOXES */
+        .retro-box {
+            width: 10mm; height: 5mm;
+            background: white; 
+            border: 2px solid #111;
+        }
+        .xp-box {
+            width: 5mm; height: 5mm;
+            background: white; border: 1px solid #111;
+        }
+        .text-line {
+            flex-grow: 1; border-bottom: 1px dashed #666; margin: 0 2mm; height: 80%;
+            display: flex; align-items: flex-end;
+        }
+
+        /* --- HEADER GRID (Solid Beige) --- */
+        .header-top { display: flex; gap: 4mm; height: 34mm; margin-bottom: 0mm; }
+        
+        /* Clean Max Logo */
+        .logo-box { width: 125mm; flex-grow: 0; margin-right: auto; display: flex; align-items: center; justify-content: flex-start; overflow: visible; } 
+        .logo-box img { width: 100%; height: 100%; object-fit: contain; object-position: left; transform: scale(1.25); transform-origin: left 25%; }
+        
+        .header-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            border: 2px solid #111;
+        }
+        .header-cell {
+            padding: 1mm 2.5mm;
+            border-bottom: 1px solid #888;
+            border-right: 1px solid #888;
+            background-color: #fff2cc; /* SOLID BEIGE */
+            display: flex; flex-direction: column; justify-content: center;
+            min-height: 7mm;
+        }
+        .header-cell:nth-child(2n) { border-right: none; }
+        .header-cell.full-width { grid-column: span 2; border-right: none; }
+        
+        .label-sm { font-weight: bold; font-size: 0.7em; text-transform: uppercase; color: #111; margin-bottom: 1mm;}
+
+        /* --- COLUMNS --- */
+        .columns-area {
+            flex-grow: 1;
+            display: flex; gap: 4mm;
+            overflow: hidden;
+        }
+        /* ZEBRA ROWS (Left Col, Liens, Objets) */
+        .retro-row {
+            height: 6mm; /* Reduced height to fit */
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 1.5mm;
+            font-size: 0.8em;
+            font-weight: bold;
+            border-bottom: 1px solid #fff;
+        }
+        .retro-row:last-child { border-bottom: none; }
+        
+        .col-left { width: 33%; display: flex; flex-direction: column; justify-content: space-between; gap: 0; }
+        .col-left .retro-row { font-size: 0.9em; height: 6.5mm; } /* Balanced height */
+        .col-right { width: 67%; display: flex; flex-direction: column; gap: 2mm; }
+        
+        /* SOLID RIGHT COLUMN OVERRIDE */
+        .col-right .retro-row.light, 
+        .col-right .retro-row.dark { 
+            background-color: #fff2cc !important; 
+        }
+
+        /* --- TEXTURE OVERLAY ON BLOCKS --- */
+        .retro-block, .header-grid {
+            position: relative;
+        }
+        
+        .retro-block::after, .header-grid::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-image: url('texture.png');
+            background-size: 150mm auto; /* Constant grain size */
+            mix-blend-mode: screen; 
+            opacity: 0.6;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="sheet">
+        <!-- HEADER -->
+        <div class="header-top">
+            <div class="logo-box">
+                <img src="logo.png" alt="Tales from the Loop">
+            </div>
+            <!-- Avatar (Integrated Style) -->
+            <div style="width: 25mm; height: 100%; border: 2px solid #111; margin-left: auto; display: flex; flex-direction: column; background: white;">
+                 <div style="background:#111; color:white; font-size:0.6em; text-align:center; padding:1px; font-weight:bold;">PHOTO</div>
+                 <div style="flex-grow:1; display:flex; align-items:center; justify-content:center; background:white; color:#aaa; font-size:0.8em; overflow:hidden;">
+                    {% if data.get('PHOTO') %}
+                        <img src="{{ data['PHOTO'] }}" style="width:100%; height:100%; object-fit:cover;">
+                    {% endif %}
+                 </div>
+            </div>
+        </div>
+
+        <!-- INFO GRID (Solid Beige) -->
+        <div class="header-grid">
+            <div class="header-cell">
+                <span class="label-sm">Nom :</span>
+                <div class="handwritten">{{ data['NOM :'] }}</div>
+            </div>
+            <div class="header-cell">
+                <span class="label-sm">Stéréotype :</span>
+                <div class="handwritten">{{ data['STÉRÉOTYPE :'] }}</div>
+            </div>
+            
+            <div class="header-cell">
+                <span class="label-sm">Âge :</span>
+                <div class="handwritten">{{ data['ÂGE :'] }}</div>
+            </div>
+            <div class="header-cell" style="flex-direction: row; align-items: center; justify-content: space-between;">
+                <span class="label-sm">Points de Chance :</span>
+                <div style="display:flex;">
+                    {% set max_luck = 15 %}
+                    {% set current_luck = data['POINTS DE CHANCE :']|int %}
+                    {% for i in range(current_luck) %}<div class="chk-box" style="width:3.5mm; height:3.5mm; background:#111; border:1px solid #111; margin-right:0.8mm;"></div>{% endfor %}
+                    {% for i in range(max_luck - current_luck) %}<div class="chk-box" style="width:3.5mm; height:3.5mm; background:#fff; border:1px solid #111; margin-right:0.8mm;"></div>{% endfor %}
+                </div>
+            </div>
+            
+            <div class="header-cell">
+                <span class="label-sm">Motivation :</span>
+                <div class="handwritten">{{ data['MOTIVATION :'] }}</div>
+            </div>
+            <div class="header-cell">
+                <span class="label-sm">Socle :</span>
+                <div class="handwritten">{{ data['SOCLE :'] }}</div>
+            </div>
+            
+            <div class="header-cell full-width">
+                <span class="label-sm">Problème :</span>
+                <div class="handwritten">{{ data['PROBLÈME :'] }}</div>
+            </div>
+            
+            <div class="header-cell full-width" style="flex-direction:row; align-items:center;">
+                <div style="flex-grow:1; display:flex; flex-direction:column;">
+                    <span class="label-sm">Fierté :</span>
+                    <div class="handwritten">{{ data['FIERTÉ :'] }}</div>
+                </div>
+                <div class="chk-box" style="width:4mm; height:4mm; border:2px solid #111; background:white;"></div>
+            </div>
+            
+            <div class="header-cell full-width" style="height: 15mm; justify-content: flex-start;">
+                <span class="label-sm">Description :</span>
+                <div class="handwritten" style="line-height:1.2;">{{ data['DESCRIPTION :'] }}</div>
+            </div>
+            
+            <div class="header-cell full-width" style="border-bottom:none;">
+                <span class="label-sm">Chanson Favorite :</span>
+                <div class="handwritten">{{ data['CHANSON FAVORITE :'] }}</div>
+            </div>
+        </div>
+
+        <!-- COLUMNS -->
+        <div class="columns-area">
+            
+            <!-- LEFT COLUMN (Striped Mechanics) -->
+            <div class="col-left">
+                <!-- ATTRIBUTS -->
+                <div class="retro-block">
+                    <div class="retro-header">Attributs</div>
+                    <div class="retro-row light"><span>Physique</span><div class="retro-box"><div class="handwritten" style="text-align: center; margin:0;">{{ data.get('PHYSIQUE', '') }}</div></div></div>
+                    <div class="retro-row dark"><span>Technique</span><div class="retro-box"><div class="handwritten" style="text-align: center; margin:0;">{{ data.get('TECHNIQUE', '') }}</div></div></div>
+                    <div class="retro-row light"><span>Cœur</span><div class="retro-box"><div class="handwritten" style="text-align: center; margin:0;">{{ data.get('CŒUR', '') }}</div></div></div>
+                    <div class="retro-row dark"><span>Intelligence</span><div class="retro-box"><div class="handwritten" style="text-align: center; margin:0;">{{ data.get('INTELLIGENCE', '') }}</div></div></div>
+                </div>
+
+                <!-- ETATS -->
+                <div class="retro-block">
+                    <div class="retro-header">État</div>
+                    <div class="retro-row light"><span>Contrarié <span class="sub-text">(-1)</span></span><div class="retro-box"></div></div>
+                    <div class="retro-row dark"><span>Effrayé <span class="sub-text">(-1)</span></span><div class="retro-box"></div></div>
+                    <div class="retro-row light"><span>Épuisé <span class="sub-text">(-1)</span></span><div class="retro-box"></div></div>
+                    <div class="retro-row dark"><span>Blessé <span class="sub-text">(-1)</span></span><div class="retro-box"></div></div>
+                    <div class="retro-row light"><span>Brisé <span class="sub-text">(Échec Auto)</span></span><div class="retro-box"></div></div>
+                </div>
+
+                <!-- COMPETENCES -->
+                <div class="retro-block">
+                    <div class="retro-header">Compétences</div>
+                    <div class="retro-row light"><span>Agilité <span class="sub-text">(Physique)</span></span><div class="retro-box"><div class="handwritten" style="text-align: center; margin:0;">{{ data.get('AGILITE', '') }}</div></div></div>
+                    <div class="retro-row dark"><span>Force <span class="sub-text">(Physique)</span></span><div class="retro-box"><div class="handwritten" style="text-align: center; margin:0;">{{ data.get('FORCE', '') }}</div></div></div>
+                    <div class="retro-row light"><span>Furtivité <span class="sub-text">(Physique)</span></span><div class="retro-box"><div class="handwritten" style="text-align: center; margin:0;">{{ data.get('FURTIVITE', '') }}</div></div></div>
+                    <div class="retro-row dark"><span>Analyse <span class="sub-text">(Tech)</span></span><div class="retro-box"><div class="handwritten" style="text-align: center; margin:0;">{{ data.get('ANALYSE', '') }}</div></div></div>
+                    <div class="retro-row light"><span>Bricolage <span class="sub-text">(Tech)</span></span><div class="retro-box"><div class="handwritten" style="text-align: center; margin:0;">{{ data.get('BRICOLAGE', '') }}</div></div></div>
+                    <div class="retro-row dark"><span>Prog. <span class="sub-text">(Tech)</span></span><div class="retro-box"><div class="handwritten" style="text-align: center; margin:0;">{{ data.get('PROG', '') }}</div></div></div>
+                    <div class="retro-row light"><span>Charisme <span class="sub-text">(Cœur)</span></span><div class="retro-box"><div class="handwritten" style="text-align: center; margin:0;">{{ data.get('CHARISME', '') }}</div></div></div>
+                    <div class="retro-row dark"><span>Charme <span class="sub-text">(Cœur)</span></span><div class="retro-box"><div class="handwritten" style="text-align: center; margin:0;">{{ data.get('CHARME', '') }}</div></div></div>
+                    <div class="retro-row light"><span>Réseau <span class="sub-text">(Cœur)</span></span><div class="retro-box"><div class="handwritten" style="text-align: center; margin:0;">{{ data.get('RESEAU', '') }}</div></div></div>
+                    <div class="retro-row dark"><span>Compr. <span class="sub-text">(Intel)</span></span><div class="retro-box"><div class="handwritten" style="text-align: center; margin:0;">{{ data.get('COMPR', '') }}</div></div></div>
+                    <div class="retro-row light"><span>Découverte <span class="sub-text">(Intel)</span></span><div class="retro-box"><div class="handwritten" style="text-align: center; margin:0;">{{ data.get('DECOUVERTE', '') }}</div></div></div>
+                    <div class="retro-row dark"><span>Empathie <span class="sub-text">(Intel)</span></span><div class="retro-box"><div class="handwritten" style="text-align: center; margin:0;">{{ data.get('EMPATHIE', '') }}</div></div></div>
+                </div>
+
+                <!-- EXPÉRIENCE (FIXED & STYLED) -->
+                <div class="retro-block">
+                    <div class="retro-header">Expérience</div>
+                    <div class="retro-row dark" style="justify-content: center; gap:1.5mm; height: 10mm; background-color: #fce5cd;">
+                        {% for i in range(10) %}<div class="xp-box"></div>{% endfor %}
+                    </div>
+                 </div>
+            </div>
+
+            <!-- RIGHT COLUMN -->
+            <div class="col-right">
+                
+                <!-- LIENS (Striped) -->
+                <div class="retro-block">
+                    <div class="retro-header">Liens</div>
+                    <div class="retro-row light"><span class="label">Enfant 1 :</span><span class="handwritten text-line">{{ data['ENFANT 1 :']|replace('-', '') }}</span></div>
+                    <div class="retro-row dark"><span class="label">Enfant 2 :</span><span class="handwritten text-line">{{ data['ENFANT 2 :']|replace('-', '') }}</span></div>
+                    <div class="retro-row light"><span class="label">Enfant 3 :</span><span class="handwritten text-line">{{ data['ENFANT 3 :']|replace('-', '') }}</span></div>
+                    <div class="retro-row dark"><span class="label">Enfant 4 :</span><span class="handwritten text-line"></span></div>
+                    <div class="retro-row light"><span class="label">PNJ 1 :</span><span class="handwritten text-line">{{ data['PNJ 1 :'] }}</span></div>
+                    <div class="retro-row dark"><span class="label">PNJ 2 :</span><span class="handwritten text-line">{{ data['PNJ 2 :'] }}</span></div>
+                </div>
+
+                <!-- OBJETS / REPAIRE -->
+                <div style="display: flex; gap: 4mm;">
+                    
+                    <!-- OBJETS (Striped) -->
+                    <div class="retro-block" style="width: 60%;">
+                         <div class="retro-header" style="display:flex; justify-content:space-between;">
+                             <span>Objets</span>
+                             <span style="font-size:0.7em;">BONUS</span>
+                         </div>
+                         <div class="retro-row gold"> 
+                             <span class="label">Objet Fétiche</span>
+                             <span class="handwritten" style="font-size:0.85em; margin-right:auto; margin-left:1mm; white-space:nowrap; overflow:hidden;">{{ data['OBJET FÉTICHE'] }}</span>
+                             <div class="retro-box" style="display:flex; align-items:center; justify-content:center; font-size: 1.1em;">+2</div>
+                         </div>
+                         {% for i in range(5) %}
+                         <div class="retro-row {{ 'dark' if i is odd else 'light' }}">
+                             <div class="text-line">{{ data['OBJETS'].split('\n')[i] if data['OBJETS'].split('\n')|length > i else '' }}</div>
+                             <div class="retro-box"></div>
+                         </div>
+                         {% endfor %}
+                    </div>
+
+                    <!-- REPAIRE (SOLID BEIGE) -->
+                     <div class="retro-block bg-beige" style="width: 40%;">
+                        <div class="retro-header">Repaire</div>
+                        <div class="bg-beige" style="flex-grow:1; padding:3mm;">
+                             <div class="handwritten">{{ data['REPAIRE'] }}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NOTES (SOLID BEIGE + FILL) -->
+                <div class="retro-block bg-beige" style="flex-grow: 1;">
+                    <div class="retro-header">Notes</div>
+                    <div class="bg-beige" style="flex-grow:1; padding:3mm; position:relative;">
+                        <div class="handwritten">{{ data['NOTES'] }}</div>
+                        <!-- Faint lines overlay (Optional, but kept faint for "paper" feel if needed. Removing to be STRICT solid per user request) -->
+                        <!-- <div style="position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; background: repeating-linear-gradient(transparent, transparent 7.9mm, #e4d5c3 8mm);"></div> -->
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>
