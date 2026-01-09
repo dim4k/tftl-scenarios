@@ -16,9 +16,9 @@
         #text(fill: tfl-orange, size: 50pt, weight: "black", font: font-heading)[LIVRE DES \ PERSONNAGES]
       ]
       #v(2cm)
-      #text(size: 20pt, font: font-heading, weight: "black", fill: tfl-black)[L'Écho du Magnétron]
+      #text(size: 20pt, font: font-heading, weight: "black", fill: tfl-black)[Les Enfants du Loop]
       #v(0.1cm)
-      #text(size: 16pt, style: "italic", fill: gray)[Une aventure Tales From The Loop]
+      #text(size: 16pt, style: "italic", fill: gray)[Recueil de Personnages Prétirés]
     ]
 
     // Separator
@@ -30,10 +30,10 @@
       #set par(justify: true, first-line-indent: 0em)
       #set text(size: 11pt)
       
-      *Ce recueil présente les cinq adolescents jouables dans cette aventure.* Chacun porte ses propres secrets, ses peurs et ses rêves. Ensemble, ils forment un groupe soudé par l'amitié et la curiosité — une bande de gamins ordinaires confrontés à l'extraordinaire.
+      *Ce recueil présente cinq adolescents prêts à jouer.* Chacun porte ses propres secrets, ses peurs et ses rêves. Ensemble, ils forment un groupe soudé par l'amitié et la curiosité — une bande de gamins ordinaires confrontés à l'extraordinaire.
       
       #v(1em)
-      *Astoria, Oregon. Novembre 1984.*
+      *Astoria, Oregon. Années 80.*
       Les tours de refroidissement du Loop dominent l'horizon, leurs silhouettes massives découpées contre le ciel gris du Pacifique. Elles ronronnent jour et nuit, ce bourdonnement grave qui fait vibrer les carreaux et berce le sommeil des adultes insouciants. 
       
       #colbreak()
@@ -41,9 +41,9 @@
       Mais les enfants savent. Ils voient les lumières bleues dans la nuit. Ils entendent les bruits étranges. Ils sentent le picotement électrique sur leur peau quand ils s'approchent trop près.
 
       #v(1em)
-      Ce soir, *Lucas a disparu*. Il avait parlé d'une "trouvaille incroyable" près de la casse de Vieux Joe. Depuis, silence radio. Son talkie-walkie ne répond plus.
+      Ces cinq amis ont grandi dans l'ombre du Loop. Ils ont partagé leurs jeux, leurs peines et leurs premiers émois. Aujourd'hui, que ce soit pour résoudre un mystère local, retrouver un objet perdu ou explorer une zone interdite, ils peuvent compter les uns sur les autres.
       
-      Les cinq personnages de ce livre sont ses meilleurs amis. Ils sont les seuls à pouvoir le retrouver avant qu'il ne soit trop tard.
+      *Ils sont les Enfants du Loop.*
     ]
   ]
 ]
@@ -135,11 +135,11 @@
     
     Sofia veut prouver qu'elle est plus intelligente qu'eux. Pas par orgueil, mais parce que personne ne la prend au sérieux à cause de son âge. À l'école, Mme. Lindström, sa prof de maths, la traite avec une condescendance exaspérante. "Tu comprendras quand tu seras plus grande, ma chérie." Sofia déteste cette phrase plus que tout.
     
-    Sa plus grande fierté ? Avoir construit un détecteur de radiations fonctionnel avec une vieille montre de son grand-père et des composants récupérés dans la casse. Elle a passé trois week-ends à souder des circuits et à calibrer les capteurs. Maintenant, quand l'aiguille s'affole, Sofia sait que quelque chose d'anormal se produit. Et l'aiguille s'affole de plus en plus souvent.
+    Sa plus grande fierté ? Avoir construit un détecteur de radiations fonctionnel avec une vieille montre de son grand-père et des composants récupérés dans la casse. Elle a passé trois week-ends à souder des circuits et à calibrer les capteurs.
     
-    Le laboratoire abandonné au sous-sol du lycée est son repaire secret. C'est là qu'elle garde ses instruments et sa collection de magazines scientifiques "empruntés" à son père. C'est d'ailleurs dans un vieux _Scientific American_ qu'elle a reconnu le logo "DARPA" sur les plans de Lucas. Ce détail l'inquiète. DARPA signifie militaire. Militaire signifie danger.
+    Le laboratoire abandonné au sous-sol du lycée est son repaire secret. C'est là qu'elle garde ses instruments et sa collection de magazines scientifiques "empruntés" à son père. Elle y passe des heures à analyser des échantillons de roche étranges ou à écouter les fréquences radio cryptées du Loop. Elle est persuadée que l'Agence cache quelque chose de gros, et elle compte bien le découvrir.
     
-    Lucas est son meilleur ami depuis l'enfance. Ils se sont rencontrés à la bibliothèque à sept ans, tous deux trop jeunes pour comprendre les livres qu'ils feuilletaient, mais assez curieux pour essayer. Lucas lui avait tendu un traité sur les trous noirs. "Tu sais lire ça ?" Sofia avait menti et dit oui. Depuis, ils sont inséparables.
+    Lucas est son meilleur ami depuis l'enfance. Ils se sont rencontrés à la bibliothèque à sept ans, tous deux trop jeunes pour comprendre les livres qu'ils feuilletaient, mais assez curieux pour essayer. Lucas lui avait tendu un traité sur les trous noirs. "Tu sais lire ça ?" Sofia avait menti et dit oui. Depuis, ils sont inséparables, unis par cette soif de comprendre l'inconnu.
   ],
   quote-text: "La science explique tout. Même les choses impossibles. Il suffit de trouver la bonne équation."
 )
@@ -179,9 +179,9 @@
     
     M. Grimes, le gardien de la casse, lui a confié avoir vu Alex fouiller les épaves avant sa disparition. "Il cherchait quelque chose, gamin. Il avait l'air possédé." Cette révélation hante Liam. Qu'est-ce qu'Alex cherchait ? L'a-t-il trouvé ?
     
-    Maintenant, avec ce gant que Lucas a trouvé... ce n'est pas une coïncidence. Le médaillon autour de son cou contient une photo d'Alex. Il le serre si fort que le métal s'imprime dans sa paume.
+    Il est persuadé que le Loop est responsable. Il compose des hymnes à la révolte, espérant qu'un jour, sa musique fera s'écrouler les murs de l'Agence comme ceux de Jéricho. Le médaillon autour de son cou contient une photo d'Alex. Il le serre si fort que le métal s'imprime dans sa paume à chaque fois qu'il passe près des tours.
   ],
-  quote-text: "Alex n'a pas fugué. Ce gant... c'est peut-être la clé de tout."
+  quote-text: "Alex n'a pas fugué. Ils l'ont pris. Et je vais faire assez de bruit pour qu'ils le rendent."
 )
 
 #character-sheet(
@@ -199,7 +199,7 @@
     
     Son Polaroid capture ce que les autres ne voient pas : le reflet d'une lumière bleue dans une flaque, l'expression fugace de peur sur un visage. Son carnet de croquis est rempli de portraits — pas de sourires convenus, mais de vérités silencieuses.
     
-    Chloe a su que Lucas mentait dès le début. Elle l'a vu dans ses yeux — cette étincelle fiévreuse, ce regard qui fuit. Elle n'a rien dit. Elle observe. Elle attend. La dernière fois qu'elle l'a vu, derrière l'excitation, il y avait de la peur. Elle a pris une photo ce jour-là. Sur le cliché, Lucas a l'air hanté.
+    Elle sait que tout le monde cache quelque chose. Lucas, Sofia, Mack... ils ont tous leurs fissures. Chloe est la gardienne de ces secrets. Elle ne juge pas. Elle documente. Car elle a appris une leçon dure : les souvenirs s'effacent, mais les photos restent. Et un jour, elles serviront de preuves.
   ],
   quote-text: "Les gens mentent avec leurs mots. Mais leurs yeux disent toujours la vérité."
 )
@@ -217,11 +217,11 @@
     
     Le garage familial est son sanctuaire. Les murs sont couverts d'étagères de pièces détachées et de posters de robots. C'est là qu'il a passé des centaines d'heures avec Lucas, bidouillant des circuits et rêvant de construire quelque chose qui changerait le monde.
     
-    Son père, M. Park, est ingénieur au Loop. Un homme silencieux aux yeux fatigués qui refuse de parler de son travail. "C'est pour ton bien. Il y a des choses qu'il vaut mieux ne pas savoir." Mais un soir, en fouillant le bureau paternel, Ethan a trouvé le dossier "PROJET GRAVITRON - NIVEAU CLEARANCE DELTA". Des schémas, des équations... et l'image d'un gant. *Ce* gant.
+    Son père, M. Park, est ingénieur au Loop. Un homme silencieux aux yeux fatigués qui refuse de parler de son travail. "C'est pour ton bien. Il y a des choses qu'il vaut mieux ne pas savoir." Mais Ethan a vu les dossiers marqués "RESTRICTED" sur le bureau paternel. Il a vu les schémas de machines qui défient la gravité.
     
-    Vieux Joe, le tenancier de la casse, lui donne des pièces en échange de réparations. "T'as des doigts en or, gamin." La casse est son terrain de jeu. Chaque épave est une mine de trésors. Il connaît l'endroit comme sa poche, y compris le vieux bus scolaire qu'il utilisait comme fort avec Lucas.
+    Vieux Joe, le tenancier de la casse, lui donne des pièces en échange de réparations. "T'as des doigts en or, gamin." La casse est son terrain de jeu. Chaque épave est une mine de trésors. Il connaît l'endroit comme sa poche, y compris le vieux bus scolaire qu'il utilise comme atelier secret avec Lucas pour leurs projets les plus ambitieux.
     
-    Quand il a vu le gant, son cœur s'est arrêté. C'est un prototype. Une technologie classée "Niveau Delta" qui n'aurait jamais dû sortir du Loop. Et Lucas l'a *activé*. La situation est grave. Plus grave que quiconque ne l'imagine. Ethan n'a pas dormi depuis trois nuits, cherchant une solution.
+    Il sait que le Loop n'est pas juste une usine d'énergie. C'est une porte vers l'impossible. Et parfois, l'impossible a besoin d'être réparé... ou arrêté. Ethan garde toujours son tournevis à portée de main. Au cas où.
   ],
-  quote-text: "Je peux réparer n'importe quoi. Mais ce gant... c'est une bombe à retardement quantique."
+  quote-text: "Je peux réparer n'importe quoi. Même la réalité, si j'ai le bon schéma."
 )
