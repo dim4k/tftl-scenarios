@@ -1,6 +1,6 @@
-# 📟 Tales From The Loop: The Echo of the Magnetron
+# 📟 Tales From The Loop: Scenario Collection
 
-> *A custom scenario and toolset for the "Tales From The Loop" Roleplaying Game.*
+> *A collection of custom scenarios, tools, and resources for the "Tales From The Loop" Roleplaying Game.*
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Build Status](https://img.shields.io/badge/build-docker-green.svg)
@@ -8,18 +8,25 @@
 
 ## 📖 Overview
 
-**The Echo of the Magnetron** (*L'Écho du Magnétron*) is a complete, ready-to-play adventure set in an alternative 80s Astoria, Oregon. 
+This repository hosts a growing library of ready-to-play adventures and utilities for **Tales From The Loop**, set in the alternative 80s.
 
-In this mystery, a group of Kids will investigate the disappearance of their friend Lucas, who vanished after finding a strange artifact near the cooling towers. They will face time paradoxes, rogue robots, and the secrets of the Loop Agency.
+It providers everything a GM needs: professionally layouted scenario books, automated character sheets, and rule summaries, all built with a modern "Docs-as-Code" approach.
 
-### Project Components
+### 📼 Featured Scenarios
 
-This repository contains everything you need to run the game:
+#### 1. The Echo of the Magnetron (*L'Écho du Magnétron*)
+* **Themes**: Time Paradox, Emotional Sacrifice, Retro-Futurism.
+* **Vibe**: *Stranger Things* meets *Dark*.
+* **Synopsis**: A group of Kids investigates the disappearance of their friend Lucas, who vanished after finding a strange artifact near the cooling towers. They will face time paradoxes, rogue robots, and the secrets of the Loop Agency.
+* **Content**: 20+ page Campaign Book, Battle Maps, Handouts.
 
-- **📘 Scenario Book**: A professionally formatted PDF campaign book (Typst).
-- **📝 Character Sheets**: A Python-based generator that creates authentic, retro-styled character sheets from JSON data.
-- **📜 Rules Summary**: A handy 2-up A4 cheat sheet for players and GMs.
-- **👥 Pre-generated Characters**: 5 ready-to-play Kids with unique backstories and stats.
+*(More scenarios coming soon...)*
+
+### 🛠️ Utilities Included
+
+- **📝 Character Sheet Generator**: A Python-based tool that renders authentic, retro-styled character sheets from simple JSON data.
+- **📜 Rules Summary**: A handy 2-up A4 cheat sheet for players and GMs (`books/rules.typ`).
+- **👥 Pre-generated Characters**: Ready-to-play Kids with unique backstories and stats.
 
 ---
 
@@ -31,7 +38,7 @@ All you need is **Docker**. The entire build process is containerized.
 
 ### 🛠️ Build Instructions
 
-To generate all the assets (Scenario, Rules, Character Sheets), simply run:
+To generate every asset in the repository (All Scenarios, Sheets, Rules), simply run:
 
 ```bash
 docker-compose up --build
@@ -39,18 +46,16 @@ docker-compose up --build
 
 ### 📂 Output
 
-After the build completes, you will find the following files at the **root of the project**:
+After the build completes, check the **root directory** for:
 
-| File | Description |
-|------|-------------|
-| `tftl-echo-de-magnetron.pdf` | The complete scenario book (approx. 20+ pages). |
-| `tftl-characters.pdf` | A booklet containing all character backstories. |
-| `tftl-rules.pdf` | A printable 1-page rules reference (2 copies per A4). |
-| `Fiche_*.pdf` | Individual character sheets (Chloe, Ethan, Liam, Mack, Sofia). |
+- `tftl-echo-de-magnetron.pdf` (Scenario Book)
+- `tftl-characters.pdf` (Character Book)
+- `tftl-rules.pdf` (Rules Summary)
+- `Fiche_*.pdf` (Individual Character Sheets)
 
 ---
 
-## 🎨 Features & Design
+## 🎨 Design Philosophy
 
 - **Authentic 80s Aesthetic**: Uses *Libre Baskerville*, *Archivo*, and handwritten fonts to match the original game's style.
 - **Automated Generation**: Change the stats in `sheets/characters.json`, run Docker, and get updated PDFs instantly.
@@ -59,5 +64,5 @@ After the build completes, you will find the following files at the **root of th
 ## 🤝 Credits
 
 - **System**: Tales From The Loop RPG by generic publisher.
-- **Scenario & Design**: Antoine 
+- **Scenario & Design**: Antoine
 - **Tech Stack**: [Typst](https://typst.app/), [Gotenberg](https://gotenberg.dev/), Python.
