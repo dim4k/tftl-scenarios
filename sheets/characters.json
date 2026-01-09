@@ -208,5 +208,47 @@
             "DECOUVERTE": "0",
             "EMPATHIE": "0"
         }
+    },
+    {
+        "filename": "Fiche_Vide.pdf",
+        "data": {
+            "NOM :": "",
+            "STÉRÉOTYPE :": "",
+            "ÂGE :": "",
+            "POINTS DE CHANCE :": "0",
+            "MOTIVATION :": "",
+            "SOCLE :": "",
+            "PROBLÈME :": "",
+            "FIERTÉ :": "",
+            "DESCRIPTION :": "",
+            "CHANSON FAVORITE :": "",
+            "ENFANT 1 :": "",
+            "ENFANT 2 :": "",
+            "ENFANT 3 :": "",
+            "ENFANT 4 :": "",
+            "PNJ 1 :": "",
+            "PNJ 2 :": "",
+            "OBJETS": "",
+            "REPAIRE": "",
+            "OBJET FÉTICHE": "",
+            "NOTES": "",
+            "PHOTO": "",
+            "PHYSIQUE": "",
+            "TECHNIQUE": "",
+            "CŒUR": "",
+            "INTELLIGENCE": "",
+            "AGILITE": "",
+            "FORCE": "",
+            "FURTIVITE": "",
+            "ANALYSE": "",
+            "BRICOLAGE": "",
+            "PROG": "",
+            "CHARISME": "",
+            "CHARME": "",
+            "RESEAU": "",
+            "COMPR": "",
+            "DECOUVERTE": "",
+            "EMPATHIE": ""
+        }
     }
 ]
